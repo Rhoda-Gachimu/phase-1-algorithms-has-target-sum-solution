@@ -1,6 +1,14 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  const seenNumbers = new Set()
+  for (const number of array) {
+    const complement = target - number
+    if (seenNumbers.has(complement)) return true
+    seenNumbers.add(number)
+  }
+  return false
 }
+
 
 /* 
   Write the Big O time complexity of your function here
@@ -8,6 +16,13 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+  Create an object to keep track of numbers we've already seen.
+  Iterate through each number in the array.
+    for the current num, identify a complement that adds to the target (comp = target - num)
+    check if any key on our object is the complement
+      if so, return true
+      otherwise, add that number to the object
+
 */
 
 /*
